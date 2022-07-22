@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <script src="/socket.io/socket.io.js"></script>
+        <style>
+            .room {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            .aside {
+                height: 100%;
+                flex-basis: 250px;
+                background: rgb(199, 199, 199);
+            }
+
+            .right {
+                flex-grow: 1;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+            }
+
+            .public_rooms {
+                height: 40%;
+                width: 100%;
+                background: rgb(143, 143, 143);
+            }
+
+            .online_users {
+                height: 60%;
+                width: 100%;
+
+            }
+
+            .message_head {
+                flex-basis: 60px;
+                background: #000;
+            }
+
+            .message_container {
+
+                flex-grow: 1;
+            }
+
+            .message_form {
+                margin: 10px 20px;
+
+            }
+
+            .name {
+                width: 300px;
+                margin: 20px auto;
+            }
+        </style>
+
+
+    </head>
+
+    <body>
+        <div class="name">
+            <form id="name_form">
+                <input placeholder="Your name" type="text">
+                <input type="submit" value="join as">
+            </form>
+        </div>
+
+        <div class="room d-none">
+            <div class="aside">
+                <div class="public_rooms">
+                    <h4>Public Rooms:</h4>
+
+                </div>
+                <div class="online_users">
+                    <h4>Online users</h4>
+
+
+                </div>
+            </div>
+            <div class="right">
+                <div class="message_head"></div>
+                <div class="message_container"></div>
+                <div class="message_form">
+                    <form>
+                        <div class="d-flex">
+                            <input placeholder="Write a message" class="form-control" type="text">
+                            <input class="btn btn-primary" type="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            const socket = io()
+        </script>
+
+    </body>
+
+</html>
