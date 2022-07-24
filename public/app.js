@@ -85,6 +85,7 @@ msgForm.addEventListener('submit', (e) => {
 socket.on("receive_a_message", (data, senderId) => {
 
     const isRoom = data.isRoom;
+
    
     const user = activeUsers.find(u => u.id === data.id);
      
@@ -155,6 +156,10 @@ socket.on('getPublicRooms', (rooms) => {
                   <span onclick="joinRoom('${room.roomName}')"  class="material-symbols-outlined">
                       group_add
                   </span>
+
+                  <span 
+                  onclick="leaveRoom('${room.roomName}')"
+                  class="material-symbols-outlined"> logout </span>
                 </button>
               </h2>
               <div
@@ -203,4 +208,11 @@ function modalClose() {
     document.body.classList.remove("modal-open");
     document.body.style = {};
     document.querySelector(".modal-backdrop")?.remove("show");
+}
+
+
+function leaveRoom(roomName) {
+    socket.emit("leaveRoom", roomName, () => {
+        innerCanvas.hidden = true;
+    })
 }

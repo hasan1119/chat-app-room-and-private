@@ -109,6 +109,7 @@ io.on('connection', (socket) => {
         const id = data.id;
         const msg = data.msg;
         const isRoom = data.isRoom === 'false' ? false : data.isRoom;
+        data.isRoom = isRoom;
 
 
         if (isRoom) {
@@ -138,7 +139,17 @@ io.on('connection', (socket) => {
         cb()
     })
 
+
+    socket.on("leaveRoom", async (roomName,cb) => {
+        socket.leave(roomName);
+        const publicRooms = await getPublicRooms();
+        io.emit('getPublicRooms', publicRooms)
+        cb()
+    })
+
 })
+
+
 
 
 
